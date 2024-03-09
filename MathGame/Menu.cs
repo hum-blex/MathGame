@@ -53,4 +53,53 @@ Q - Quit the program");
 		} while (isGameOn);
 
 	}
+	internal static string[] Level()
+	{
+		var random = new Random();
+		int num = 0;
+		string data = "";
+		do
+		{
+			Console.Clear();
+			Console.WriteLine($@"Choose your Level:
+E - Easy
+M - Medium
+H - Hard
+X - Extreme");
+			Console.WriteLine("-----------------------------------");
+			var level = Console.ReadLine();
+
+			switch (level.Trim().ToLower())
+			{
+				case "e":
+					Console.WriteLine("You chose Easy level");
+					num = random.Next(1, 9);
+					data = "Easy";
+					break;
+				case "m":
+					Console.WriteLine("You chose Medium level");
+					num = random.Next(10, 99);
+					data = "Medium";
+					break;
+				case "h":
+					Console.WriteLine("You chose Hard level");
+					num = random.Next(100, 999);
+					data = "Hard";
+					break;
+				case "x":
+					Console.WriteLine("You chose Extreme level");
+					num = random.Next(1000, 9999);
+					data = "Extreme";
+					break;
+				default:
+					Console.WriteLine("Invalid Input");
+					break;
+			}
+		} while (num == 0);
+
+		var result = new string[2];
+		result[0] = num.ToString();
+		result[1] = data;
+		return result;
+	}
 }
