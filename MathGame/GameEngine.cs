@@ -16,6 +16,8 @@ internal class GameEngine
 		Console.WriteLine("How many questions do you want to pick?");
 		var questions = Console.ReadLine();
 		questions = Helpers.GetNumberOfQuestions(questions);
+		var watch = new System.Diagnostics.Stopwatch();
+		watch.Start();
 		for (int i = 0; i < int.Parse(questions); i++)
 		{
 			Console.Clear();
@@ -44,7 +46,8 @@ internal class GameEngine
 				Console.ReadLine();
 			}
 		}
-		Helpers.AddToHistory(score, GameType.Addition, level[1]);
+		watch.Stop();
+		Helpers.AddToHistory(score, GameType.Addition, level[1], watch.ElapsedMilliseconds);
 
 	}
 	internal void SubtractionGame(string message)
@@ -58,6 +61,8 @@ internal class GameEngine
 		Console.WriteLine("How many questions do you want to pick?");
 		var questions = Console.ReadLine();
 		questions = Helpers.GetNumberOfQuestions(questions);
+		var watch = new System.Diagnostics.Stopwatch();
+		watch.Start();
 		for (int i = 0; i < int.Parse(questions); i++)
 		{
 			Console.Clear();
@@ -85,7 +90,8 @@ internal class GameEngine
 				Console.ReadLine();
 			}
 		}
-		Helpers.AddToHistory(score, GameType.Subtraction, level[1]);
+		watch.Stop();
+		Helpers.AddToHistory(score, GameType.Subtraction, level[1], watch.ElapsedMilliseconds);
 	}
 	internal void MultiplicationGame(string message)
 	{
@@ -98,6 +104,8 @@ internal class GameEngine
 		Console.WriteLine("How many questions do you want to pick?");
 		var questions = Console.ReadLine();
 		questions = Helpers.GetNumberOfQuestions(questions);
+		var watch = new System.Diagnostics.Stopwatch();
+		watch.Start();
 		for (int i = 0; i < int.Parse(questions); i++)
 		{
 			Console.Clear();
@@ -124,7 +132,8 @@ internal class GameEngine
 				Console.ReadLine();
 			}
 		}
-		Helpers.AddToHistory(score, GameType.Multiplication, level[1]);
+		watch.Stop();
+		Helpers.AddToHistory(score, GameType.Multiplication, level[1], watch.ElapsedMilliseconds);
 	}
 	internal void DivisionGame(string message)
 	{
@@ -135,6 +144,8 @@ internal class GameEngine
 		Console.WriteLine("How many questions do you want to pick?");
 		var questions = Console.ReadLine();
 		questions = Helpers.GetNumberOfQuestions(questions);
+		var watch = new System.Diagnostics.Stopwatch();
+		watch.Start();
 		for (int i = 0; i < int.Parse(questions); i++)
 		{
 			Console.Clear();
@@ -163,6 +174,17 @@ internal class GameEngine
 			}
 
 		}
-		Helpers.AddToHistory(score, GameType.Division, level[1]);
+		watch.Stop();
+		Helpers.AddToHistory(score, GameType.Division, level[1], watch.ElapsedMilliseconds);
+	}
+
+	internal void RandomGame()
+	{
+		var random = new Random();
+		var rand = random.Next(1, 4);
+		if (rand == 1) AdditionGame("Addition game");
+		else if (rand == 2) SubtractionGame("Subtraction game");
+		else if (rand == 3) MultiplicationGame("Multiplication game");
+		else DivisionGame("Division game");
 	}
 }

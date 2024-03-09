@@ -5,14 +5,15 @@ namespace MathGame;
 internal class Helpers
 {
 	internal static List<Game> games = new();
-	internal static void AddToHistory(int gameScore, GameType gameType, string gameLevel)
+	internal static void AddToHistory(int gameScore, GameType gameType, string gameLevel, long time)
 	{
 		games.Add(new Game
 		{
 			Date = DateTime.Now,
 			Score = gameScore,
 			Type = gameType,
-			Level = gameLevel
+			Level = gameLevel,
+			Time = time
 		});
 
 	}
@@ -24,7 +25,7 @@ internal class Helpers
 		Console.WriteLine("-----------------------------------");
 		foreach (var game in games)
 		{
-			Console.WriteLine($"{game.Date}-{game.Type}:{game.Score} pts {game.Level} Level");
+			Console.WriteLine($"{game.Date}-{game.Type}:{game.Score} pts, Level :{game.Level}  {game.Time} milliseconds");
 		}
 		Console.WriteLine("-----------------------------------\n");
 		Console.WriteLine("Press any key to return to Main Menu");

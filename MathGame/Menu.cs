@@ -20,6 +20,7 @@ A - Addition
 S - Subtraction
 M - Multiplication
 D - Division 
+R - Random
 Q - Quit the program");
 			Console.WriteLine("-----------------------------------");
 
@@ -41,6 +42,9 @@ Q - Quit the program");
 					break;
 				case "d":
 					engine.DivisionGame("Division game");
+					break;
+				case "r":
+					engine.RandomGame();
 					break;
 				case "q":
 					Console.WriteLine("Goodbye");
